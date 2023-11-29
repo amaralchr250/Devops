@@ -413,6 +413,13 @@ Segue também problemas com integração com Docker usando VS CODE:
 
 https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user
 
+Segue o passo-a-passo se não conseguir logar no Portainer:
+
+```
+docker pull portainer/helper-reset-password
+docker run --rm -v portainer_data:/data portainer/helper-reset-password
+```
+
 Problemas com conexão com minkube realizar o throubleshoot abaixo
 
 ```bash
