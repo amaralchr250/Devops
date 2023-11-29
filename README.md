@@ -408,6 +408,11 @@ Onde:
 * `dest-namespace` é o namespace onde queremos fazer o deploy
 
 Observação:
+
+Segue também problemas com integração com Docker usando VS CODE:
+
+https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user
+
 Problemas com conexão com minkube realizar o throubleshoot abaixo
 
 ```bash
