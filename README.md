@@ -82,6 +82,11 @@ Link - https://www.appsdeveloperblog.com/how-to-start-mysql-in-docker-container/
 ````
 docker run -d -p 3306:3306 --name mysql-A -e MYSQL_ROOT_PASSWORD=Senha123 -e MYSQL_DATABASE=devops -e MYSQL_USER=admin -e MYSQL_PASSWORD=Senha123 mysql/mysql-server:latest
 ````
+
+Print:
+
+![image](https://github.com/amaralchr250/Devops/assets/42553791/0babb4fd-09ae-4584-8253-2b23dd8492bb)
+
 ### Vamos agora subir nosso cluster de ArgoCD
 Link - https://github.com/badtuxx/DescomplicandoArgoCD/blob/main/pt/src/day-1/README.md#conte%C3%BAdo-do-day-1
 
@@ -408,6 +413,10 @@ Onde:
 * `path` é o caminho onde está o nosso código
 * `dest-server` é o cluster onde queremos fazer o deploy
 * `dest-namespace` é o namespace onde queremos fazer o deploy
+
+Print:
+
+![image](https://github.com/amaralchr250/Devops/assets/42553791/6e0e84ed-997a-45ab-9a44-bdf351322f1c)
 
 Observação:
 
