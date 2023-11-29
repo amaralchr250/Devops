@@ -8,6 +8,8 @@ Auxiliar os inciantes a montar o melhor ambiente de estudo.
 
 ### Segue as instalações e o passo-a-passo em ordem
 
+Existe o script dentro do meu repositorio que é <strong>devops.sh</strongo> que faz todo o processo abaixo que estou indicando para vocês.
+
 ### Marcar o DNS no host do Server:
 ````
 curl -4 icanhazip.com
