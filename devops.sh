@@ -25,16 +25,6 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.
 sudo apt-get update
 sudo apt-get install helm
 
-# Instalar kubectl
-status "Instalando kubectl"
-sudo apt update
-sudo apt install ca-certificates curl apt-transport-https -y
-sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-sudo apt update
-sudo apt install kubectl -y
-sudo snap install kubectl --classic
-
 # Instalar Minikube
 status "Instalando Minikube"
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
@@ -52,19 +42,29 @@ echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docke
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
+# Instalar kubectl
+status "Instalando kubectl"
+sudo apt update
+sudo apt install ca-certificates curl apt-transport-https -y
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt update
+sudo apt install kubectl -y
+sudo snap install kubectl --classic
+
 # Subir container Portainer
 status "Subindo container Portainer"
 docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+
+# Subir docker do MySQL
+status "Subindo container MySQL"
+docker run -d -p 3306:3306 --name mysql-A -e MYSQL_ROOT_PASSWORD=Senha123 -e MYSQL_DATABASE=devops -e MYSQL_USER=admin -e MYSQL_PASSWORD=Senha123 mysql/mysql-server:latest
 
 # Instalar GUI e server para acesso remoto
 status "Instalando GUI e servidor para acesso remoto"
 sudo apt update
 sudo apt install x2goserver x2goserver-xsession
 sudo apt install mate-core mate-desktop-environment mate-notification-daemon
-
-# Subir docker do MySQL
-status "Subindo container MySQL"
-docker run -d -p 3306:3306 --name mysql-A -e MYSQL_ROOT_PASSWORD=Senha123 -e MYSQL_DATABASE=devops -e MYSQL_USER=admin -e MYSQL_PASSWORD=Senha123 mysql/mysql-server:latest
 
 # Subir cluster ArgoCD
 status "Subindo cluster ArgoCD"
